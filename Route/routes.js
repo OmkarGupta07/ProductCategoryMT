@@ -14,16 +14,28 @@ const {
     GetProductDetailsById,
 } = require('../Controller/ProductController')
 
-route.post('/AddCategory', InsertCategory); 
-route.put('/EditCategory/:id', UpdateCategory); 
-route.delete('/RemoveCategory/:id', DeleteCategory); 
-route.get('/GetCategory', GetCategory); 
-route.get('/GetCategoryById/:id', GetCategoryById); 
 
-route.post('/AddProduct', CreateProduct); 
-route.put('/EditProduct/:id', EditProduct); 
-route.delete('/RemoveProduct/:id', RemoveProduct); 
-route.get('/GetProducts', GetProducts); 
-route.get('/GetProductById/:id', GetProductDetailsById); 
+route.post('/categories', InsertCategory);
+route.put('/categories/:id', UpdateCategory);
+route.delete('/categories/:id', DeleteCategory);
+route.get('/categories', GetCategory);
+route.get('/categories/:id', GetCategoryById);
+
+route.post('/products', CreateProduct);
+route.put('/products/:id', EditProduct);
+route.delete('/products/:id', RemoveProduct);
+route.get('/products', GetProducts);
+route.get('/products/:id', GetProductDetailsById);
+
+
+
+
+
+
+
+
+
+
+
 
 module.exports = { route };
