@@ -12,10 +12,10 @@ export const updateCategory = url + "/api/EditCategory"
 export const DeleteCategory= url+"/api/RemoveCategory"
 
 export const getProducts = url + "/api/GetProducts"
-export const InsertProducts = url + "/api/AddProducts"
-export const getProductsbyid = url + "/api/GetProductId"
-export const updateProducts = url + "/api/EditProducts"
-export const DeleteById= url+"/api/RemoveProducts"
+export const InsertProducts = url + "/api/AddProduct"
+export const getProductsbyid = url + "/api/GetProductById"
+export const updateProducts = url + "/api/EditProduct"
+export const DeleteById= url+"/api/RemoveProduct"
 
 
 

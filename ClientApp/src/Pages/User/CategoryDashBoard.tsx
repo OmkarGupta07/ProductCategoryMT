@@ -135,12 +135,11 @@ const UserDashboard = () => {
     console.log(data,'data')
     
     if (data !== null && data != undefined ) {
-      await setDashboardData(data.data.data[0]);
-      setDashboardCount(data.data.data[0].length);
+      await setDashboardData(data.data[0]);
+      setDashboardCount(data.data[0].length);
     }
   };
   useEffect(() => {
-    // console.log("searchText", searchText.length);
     if (searchText.length !== 0) {
       setSearchText(searchText);
       setDashboardStart(0);
@@ -154,11 +153,7 @@ const UserDashboard = () => {
   useEffect(() => {
     LoadDashboard();
   }, [
-    dashboardStart,
-    dashboardSortColumn,
-    dashboardSortDirection,
-    dashboardCount,
-    searchText,
+    
   ]);
   const DeleteCategoryById = async (id) => {
     const url = `${DeleteCategory}/${id}`;
@@ -185,7 +180,7 @@ const UserDashboard = () => {
     count: dashboardCount,
     rowsPerPage: dashboardPageSize,
     page: page,
-    serverSide: true,
+    serverSide: false,
     rowsPerPageOptions: [],
     download: false,
     print: false,
@@ -242,11 +237,31 @@ const UserDashboard = () => {
                   <button className="btn btn-save" onClick={add}>Add</button>
                 
                 </div>
+
+                <div className="ml-3">
+                  <button className="btn btn-save" onClick={() => { navigate('/Product')}}>Product</button>
+                
+                </div>
                   </li>
                 </ul>
               </div>
             </div>
           </div>
+
+
+          <div className="page-content row filter-row-container m-0">
+            <div className="transformer-tabs col-lg-12 col-md-12">
+              <div className="meeting-tabs tabs-main col-lg-12 pl-0">
+                <ul className="filters">
+                  <li className="row d-flex mr-3">
+              
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+
 
           <div>
             <DynamicGrid

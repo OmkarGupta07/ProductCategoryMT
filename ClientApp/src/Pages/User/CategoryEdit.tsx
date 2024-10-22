@@ -39,7 +39,7 @@ const UserEdit = () => {
     const data = await axios.get(url);
     console.log(data,'hot')
     if (data) {
-      setCategoryName(data.data.data[0][0].CategoryName || "");
+      setCategoryName(data.data[0][0].CategoryName || "");
       
     }
   };

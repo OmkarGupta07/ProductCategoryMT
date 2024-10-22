@@ -10,7 +10,7 @@ const UserDashboard = () => {
   let navigate = useNavigate();
   const [dashboardData, setDashboardData] = useState<any>([]);
   const [dashboardPageSize, setDashboardPageSize] = useState(10);
-  const [dashboardStart, setDashboardStart] = useState(0);
+  const [dashboardStart, setDashboardStart] = useState(1);
   const [dashboardSortColumn, setDashboardSortColumn] = useState<any>("");
   const [dashboardSortDirection, setDashboardSortDirection] = useState("");
   const [dashboardCount, setDashboardCount] = useState(0);
@@ -129,11 +129,7 @@ const UserDashboard = () => {
       }
   ];
 
-  useEffect(() => {
-    (async () => {
-
-    })();
-  }, []);
+ 
 
 
 
@@ -144,23 +140,21 @@ const UserDashboard = () => {
 
     let requestParams = {
       pageSize: dashboardPageSize,
-      pageStart: dashboardStart,
+      pageStart:dashboardStart, 
       SortOrder: dashboardSortDirection,
-      SortColumn: dashboardSortColumn,
       SearchText: searchText,
     };
-    const  data  = await axios.get(getProducts);
-    console.log(data,'data')
+    const data = await axios.get(getProducts);    console.log(data,'data')
     
     if (data !== null && data != undefined ) {
       await setDashboardData(data.data.data[0]);
-      setDashboardCount(data.data.data[0].length);
+      await setDashboardCount(data.data.data[0].length);
     }
   };
   useEffect(() => {
     if (searchText.length !== 0) {
       setSearchText(searchText);
-      setDashboardStart(0);
+      setDashboardStart(1);
       setPage(0);
     } else {
       setDashboardStart(0);
@@ -171,28 +165,22 @@ const UserDashboard = () => {
   useEffect(() => {
     LoadDashboard();
   }, [
-    dashboardStart,
-    dashboardSortColumn,
-    dashboardSortDirection,
-    dashboardCount,
-    searchText,
+  
   ]);
 
 
   const dashboardOptions = {
     showEmptyDataSourceMessage: true,
     selectableRows: "none",
-    count: dashboardCount,
     rowsPerPage: dashboardPageSize,
-    page: page,
-    serverSide: true,
+    page:page,
+    serverSide: false,
     rowsPerPageOptions: [],
     download: false,
     print: false,
     viewColumns: false,
     filter: false,
     search: false,
-    responsive: "standard",
 
     onChangeRowsPerPage: (num) => {
     
@@ -215,9 +203,10 @@ const UserDashboard = () => {
       }
     },
     onChangePage: async (page) => {
-      await setPage(page);
-      await setDashboardStart(page * dashboardPageSize);
-    },
+      console.log("Changing to page: ", page); // Debug
+      await setDashboardStart(page * dashboardPageSize); // Update dashboardStart properly
+  },
+
     textLabels: {
       body: {
         noMatch: "No data found",
@@ -240,6 +229,12 @@ const UserDashboard = () => {
                   <button className="btn btn-save" onClick={add}>Add</button>
                 
                 </div>
+
+                <div className="ml-3">
+                  <button className="btn btn-save" onClick={() => {navigate('/Category')}}>Category</button>
+                
+                </div>
+
                   </li>
                 </ul>
               </div>

@@ -23,7 +23,7 @@ const UserEdit = () => {
     const fetchCategories = async () => {
       try {
         const response = await axios.get(getCategory);
-        const formattedData = response.data.data[0].map(category => ({
+        const formattedData = response.data[0].map(category => ({
           value: category.CategoryId, 
           label: category.CategoryName 
         }));
