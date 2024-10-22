@@ -159,9 +159,8 @@ const UserDashboard = () => {
     const url = `${DeleteCategory}/${id}`;
     
     const data = await axios.delete(url);
-    console.log(data,'heyeyyeye');
 
-    if (data.status === 202) {
+    if (data.status === 400) {
       alert('Cannot delete this category');
   
     }
@@ -227,7 +226,6 @@ const UserDashboard = () => {
       {true ? (
         <>
        
-
           <div className="page-content row filter-row-container m-0">
             <div className="transformer-tabs col-lg-12 col-md-12">
               <div className="meeting-tabs tabs-main col-lg-12 pl-0">

@@ -24,6 +24,7 @@ const GetCategoryData = async () => {
     try {
       const [result] = await DBConnection.query('CALL AddCategory(?);', [CategoryName]);
       return { message: 'Category added successfully', result };  
+      
     } catch (error) {
       console.log(error);
       throw new Error('Internal Server Error');
@@ -47,7 +48,6 @@ const GetCategoryData = async () => {
       const [categoryExists] = await DBConnection.query('SELECT * FROM products WHERE CategoryId = ?', [id]);
       console.log('its working broo');
       
-      console.log(categoryExists,categoryExists.length);
       
       if (categoryExists.length === 0) {
         await DBConnection.query('CALL DeleteCategory(?);', [id]);
