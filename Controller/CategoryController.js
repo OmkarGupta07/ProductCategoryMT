@@ -9,7 +9,7 @@ const {
 const GetCategory = async (req, res) => {
   try {
     const categories = await GetCategoryData();
-
+    
     if (categories.length === 0) {
       return res.status(404).json({ message: 'No categories found' });
     }

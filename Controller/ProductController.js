@@ -9,7 +9,6 @@ const {
 const GetProducts = async (req, res) => {
     try {
         const { SearchText = '', SortOrder = 'ASC', pageStart = 1, pageSize = 100 } = req.query;
-        console.log(SearchText, SortOrder, pageStart, pageSize);
 
         const products = await GetProductData(SearchText, SortOrder, pageStart, pageSize);
 
@@ -79,10 +78,8 @@ const RemoveProduct = async (req, res) => {
     try {
         const { id } = req.params;
 
-        console.log(id);
 
         const result = await DeleteProduct(id);
-        console.log(result);
 
         if (result.error || !result) {
             return res.status(404).json({ message: 'Product not found or deletion failed' });
